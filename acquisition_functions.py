@@ -1,6 +1,10 @@
 import numpy as np
 import sys
 
+"""
+Acquisition functions are mathematical techniques that guide how the parameter space
+should be explored during Bayesian optimizations.
+"""
 # Different acquisition functions that can be used by BANANAS
 def acq_fn(predictions, explore_type='its'):
     predictions = np.array(predictions)
