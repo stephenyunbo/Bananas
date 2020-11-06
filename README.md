@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BANANAS
 
 **Note: our naszilla/bananas repo has been extended and renamed to [naszilla/naszilla](https://github.com/naszilla/naszilla), and this repo is deprecated and not maintained. Please use [naszilla/naszilla](https://github.com/naszilla/naszilla), which has more functionality.**
@@ -109,3 +110,6 @@ Please cite [our paper](https://arxiv.org/abs/1910.11858) if you use code from t
 }
 ```
 
+=======
+# Bananas
+>>>>>>> a3b4b9b3884abe6a91abfaa54b268878b818b941
