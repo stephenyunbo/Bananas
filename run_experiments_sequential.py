@@ -20,15 +20,15 @@ def run_experiments(args, save_dir):
     trials = args.trials
     out_file = args.output_filename
     save_specs = args.save_specs
-    metann_params = meta_neuralnet_params(args.search_space)
-    algorithm_params = algo_params(args.algo_params)
+    metann_params = meta_neuralnet_params(args.search_space) # return a dictionary
+    algorithm_params = algo_params(args.algo_params) # return a list with each element is a dictionary
     num_algos = len(algorithm_params)
     logging.info(algorithm_params)
 
     # set up search space
-    mp = copy.deepcopy(metann_params)
-    ss = mp.pop('search_space')
-    dataset = mp.pop('dataset')
+    mp = copy.deepcopy(metann_params) # mp is a dictionary
+    ss = mp.pop('search_space') # ss is a String, e.g, 'nasbench', 'darts', etc.
+    dataset = mp.pop('dataset') # dataset is a String, e.g, 'cifar10', etc.
     search_space = Data(ss, dataset=dataset)
 
     for i in range(trials):

@@ -32,13 +32,13 @@ def run_meta_neuralnet(search_space, dicts,
     # data: list of arch dictionary objects
     # trains a meta neural network
     # returns list of k arch dictionary objects - the k best predicted
-    # ? why set num_ensemble to 5
+    # Q: why set num_ensemble to 5?
 
     results = []
     meta_neuralnet = MetaNeuralnet()
     data = search_space.encode_data(dicts)
-    xtrain = np.array([d[1] for d in data])
-    ytrain = np.array([d[2] for d in data])
+    xtrain = np.array([d[1] for d in data]) # xtrain (encoded architectures)
+    ytrain = np.array([d[2] for d in data]) # ytrain (val loss)
 
     candidates = search_space.get_candidates(data, 
                                             acq_opt_type='mutation_random',

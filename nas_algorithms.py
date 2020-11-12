@@ -13,6 +13,7 @@ from data import Data
 def run_nas_algorithm(algo_params, search_space, mp):
 
     # run nas algorithm
+    # Obtaining specific data by running different algorithms
     ps = copy.deepcopy(algo_params)
     algo_name = ps.pop('algo_name')
 
@@ -39,7 +40,8 @@ def run_nas_algorithm(algo_params, search_space, mp):
     loss = 'val_loss'
     if 'loss' in ps:
         loss = ps['loss']
-
+    
+    # return 2 parameters: algo_result, run_datum
     return compute_best_test_losses(data, k, total_queries, loss), data
 
 
@@ -59,10 +61,10 @@ def compute_best_test_losses(data, k, total_queries, loss):
 
 
 def random_search(search_space,
-                  total_queries=150, 
-                  loss='val_loss',
-                  deterministic=True,
-                  verbose=1):
+                  total_queries=150, # -> **ps
+                  loss='val_loss', # -> **ps
+                  deterministic=True, # -> **ps
+                  verbose=1): # -> **ps
     """ 
     random search
     """

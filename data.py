@@ -103,6 +103,7 @@ class Data:
     def mutate_arch(self, 
                     arch, 
                     mutation_rate=1.0):
+        # Mutation algorithm is used to optimize the acquisition function
         if self.search_space in ['nasbench', 'nasbench_201']:
             return Cell(**arch).mutate(self.nasbench, 
                                        mutation_rate=mutation_rate)
@@ -131,6 +132,7 @@ class Data:
         create a dataset of randomly sampled architectues
         test for isomorphisms using a hash map of path indices
         use patience_factor to avoid infinite loops
+        ?Q: what does isomorphisms mean here
         """
         data = []
         dic = {}
