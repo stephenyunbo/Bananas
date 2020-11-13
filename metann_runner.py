@@ -40,6 +40,7 @@ def run_meta_neuralnet(search_space, dicts,
     xtrain = np.array([d[1] for d in data]) # xtrain (encoded architectures)
     ytrain = np.array([d[2] for d in data]) # ytrain (val loss)
 
+    # get_candidates(): Creates a set of candidate architectures with mutated and/or random architectures
     candidates = search_space.get_candidates(data, 
                                             acq_opt_type='mutation_random',
                                             encode_paths=True, 
