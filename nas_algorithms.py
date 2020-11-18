@@ -14,7 +14,7 @@ def run_nas_algorithm(algo_params, search_space, mp):
 
     # run nas algorithm
     # Obtaining specific data by running different algorithms
-    ps = copy.deepcopy(algo_params)
+    ps = copy.deepcopy(algo_params) # ps is a dictionary
     algo_name = ps.pop('algo_name')
 
     if algo_name == 'random':
@@ -150,6 +150,7 @@ def bananas(search_space,
     from acquisition_functions import acq_fn
     from meta_neural_net import MetaNeuralnet
 
+    # create a dataset of randomly sampled architectues: 10 architectures
     data = search_space.generate_random_dataset(num=num_init, 
                                                 encoding_type=encoding_type, 
                                                 cutoff=cutoff,
@@ -159,12 +160,12 @@ def bananas(search_space,
 
     while query <= total_queries:
 
-        xtrain = np.array([d['encoding'] for d in data])
-        ytrain = np.array([d[loss] for d in data])
+        xtrain = np.array([d['encoding'] for d in data]) # xtrain (encoded architectures)
+        ytrain = np.array([d[loss] for d in data]) # ytrain (val loss)
 
         if (query == num_init + k) and verbose:
-            print('bananas xtrain shape', xtrain.shape)
-            print('bananas ytrain shape', ytrain.shape)
+            print('bananas xtrain shape', xtrain.shape) 
+            print('bananas ytrain shape', ytrain.shape) 
 
         # get a set of candidate architectures
         candidates = search_space.get_candidates(data, 

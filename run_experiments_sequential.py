@@ -40,7 +40,7 @@ def run_experiments(args, save_dir):
             # run NAS algorithm
             print('\n* Running algorithm: {}'.format(algorithm_params[j]))
             starttime = time.time()
-            algo_result, run_datum = run_nas_algorithm(algorithm_params[j], search_space, mp)
+            algo_result, run_datum = run_nas_algorithm(algorithm_params[j], search_space, mp) # algorithm_params[j] is a dictionary for a specific algorithm
             algo_result = np.round(algo_result, 5)
 
             # remove unnecessary dict entries that take up space
