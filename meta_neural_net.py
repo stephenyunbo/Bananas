@@ -67,7 +67,7 @@ class MetaNeuralnet:
             verbose=0, 
             regularization=0,
             **kwargs):
-
+        """
         if loss == 'mle':
             loss_fn = mle_loss
         elif loss == 'mape':
@@ -90,8 +90,22 @@ class MetaNeuralnet:
                         verbose=verbose)
 
         train_pred = np.squeeze(self.model.predict(xtrain))
+        """
+
+        # Casual Linear Regression
+        
+        a = 0.5
+     
+        train_pred = np.sum(a * xtrain, axis = 1)
         train_error = np.mean(abs(train_pred-ytrain))
         return train_error
+        
 
     def predict(self, xtest):
-        return self.model.predict(xtest)
+
+        # Casual Linear Regression
+        
+        a = 0.5
+        return np.sum(a * xtest, axis = 1)
+        
+        #return self.model.predict(xtest)

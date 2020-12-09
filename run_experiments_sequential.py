@@ -21,7 +21,7 @@ def run_experiments(args, save_dir):
     out_file = args.output_filename
     save_specs = args.save_specs
     metann_params = meta_neuralnet_params(args.search_space) # return a dictionary
-    algorithm_params = algo_params(args.algo_params) # return a list with each element is a dictionary
+    algorithm_params = algo_params(args.algo_params) # return a list with each element is a dictionary, default: algo_params = main_experiments
     num_algos = len(algorithm_params)
     logging.info(algorithm_params)
 
