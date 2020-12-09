@@ -11,6 +11,7 @@ import tensorflow as tf
 from tensorflow.keras import backend as K
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
+from sklearn.linear_model import LinearRegression
 
 def mle_loss(y_true, y_pred):
     # Minimum likelihood estimate loss function
@@ -28,7 +29,7 @@ def mape_loss(y_true, y_pred):
 
 
 class MetaNeuralnet:
-
+    """
     def get_dense_model(self, 
                         input_dims, 
                         num_layers,
@@ -56,7 +57,7 @@ class MetaNeuralnet:
 
         dense_net = keras.models.Model(inputs=input_layer, outputs=output)
         return dense_net
-
+    """
     def fit(self, xtrain, ytrain, 
             num_layers=10,
             layer_width=20,
@@ -90,22 +91,17 @@ class MetaNeuralnet:
                         verbose=verbose)
 
         train_pred = np.squeeze(self.model.predict(xtrain))
-        """
-
-        # Casual Linear Regression
-        
-        a = 0.5
-     
-        train_pred = np.sum(a * xtrain, axis = 1)
         train_error = np.mean(abs(train_pred-ytrain))
         return train_error
+        """
+        self.model = LinearRegression()
+        self.model.fit(xtrain,ytrain)
         
+        train_pred = np.squeeze(self.model.predict(xtrain))
+        train_error = np.mean(abs(train_pred-ytrain))
+        return train_error
 
+
+       
     def predict(self, xtest):
-
-        # Casual Linear Regression
-        
-        a = 0.5
-        return np.sum(a * xtest, axis = 1)
-        
-        #return self.model.predict(xtest)
+        return self.model.predict(xtest)
